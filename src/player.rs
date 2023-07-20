@@ -25,19 +25,19 @@ pub fn player_input(gs: &mut State, ctx: &mut Rltk) {
     match ctx.key {
         None => {} // Nothing happened
         Some(key) => match key {
-            VirtualKeyCode::Left | VirtualKeyCode::Numpad4 | VirtualKeyCode::H => {
+            VirtualKeyCode::Left | VirtualKeyCode::Numpad4 | VirtualKeyCode::A => {
                 try_move_player(-1, 0, &mut gs.ecs)
             }
 
-            VirtualKeyCode::Right | VirtualKeyCode::Numpad6 | VirtualKeyCode::L => {
+            VirtualKeyCode::Right | VirtualKeyCode::Numpad6 | VirtualKeyCode::D => {
                 try_move_player(1, 0, &mut gs.ecs)
             }
 
-            VirtualKeyCode::Up | VirtualKeyCode::Numpad8 | VirtualKeyCode::K => {
+            VirtualKeyCode::Up | VirtualKeyCode::Numpad8 | VirtualKeyCode::W => {
                 try_move_player(0, -1, &mut gs.ecs)
             }
 
-            VirtualKeyCode::Down | VirtualKeyCode::Numpad2 | VirtualKeyCode::J => {
+            VirtualKeyCode::Down | VirtualKeyCode::Numpad2 | VirtualKeyCode::S => {
                 try_move_player(0, 1, &mut gs.ecs)
             }
 
