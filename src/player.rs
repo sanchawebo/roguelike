@@ -26,24 +26,27 @@ pub fn try_move_player(delta_x: i32, delta_y: i32, ecs: &mut World) {
 
 pub fn player_input(gs: &mut State, ctx: &mut Rltk) -> RunState {
     // Player movement
+    // println!("{:?}", ctx.key);
     match ctx.key {
         None => return RunState::Paused, // Nothing happened
         Some(key) => match key {
-            VirtualKeyCode::Left | VirtualKeyCode::Numpad4 | VirtualKeyCode::A => {
+            VirtualKeyCode::Left | VirtualKeyCode::Key4 | VirtualKeyCode::A => {
                 try_move_player(-1, 0, &mut gs.ecs)
             }
-
-            VirtualKeyCode::Right | VirtualKeyCode::Numpad6 | VirtualKeyCode::D => {
+            VirtualKeyCode::Right | VirtualKeyCode::Key6 | VirtualKeyCode::D => {
                 try_move_player(1, 0, &mut gs.ecs)
             }
-
-            VirtualKeyCode::Up | VirtualKeyCode::Numpad8 | VirtualKeyCode::W => {
+            VirtualKeyCode::Up | VirtualKeyCode::Key8 | VirtualKeyCode::W => {
                 try_move_player(0, -1, &mut gs.ecs)
             }
-
-            VirtualKeyCode::Down | VirtualKeyCode::Numpad2 | VirtualKeyCode::S => {
+            VirtualKeyCode::Down | VirtualKeyCode::Key2 | VirtualKeyCode::S => {
                 try_move_player(0, 1, &mut gs.ecs)
             }
+
+            VirtualKeyCode::Key9 => try_move_player(1, -1, &mut gs.ecs),
+            VirtualKeyCode::Key7 => try_move_player(-1, -1, &mut gs.ecs),
+            VirtualKeyCode::Key3 => try_move_player(1, 1, &mut gs.ecs),
+            VirtualKeyCode::Key1 => try_move_player(-1, 1, &mut gs.ecs),
 
             _ => return RunState::Paused,
         },
